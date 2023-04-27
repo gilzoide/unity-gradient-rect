@@ -15,6 +15,7 @@ namespace Gilzoide.GradientGraphic
             TopToBottom,
         }
 
+        [Space]
         [SerializeField] protected Gradient _gradient;
         [SerializeField] protected Direction _direction;
 
@@ -50,8 +51,6 @@ namespace Gilzoide.GradientGraphic
         {
             vh.Clear();
 
-            Rect rect = GetPixelAdjustedRect();
-
             using (var enumerator = EnumerateGradient(_gradient).GetEnumerator())
             {
                 if (!enumerator.MoveNext())
@@ -59,7 +58,8 @@ namespace Gilzoide.GradientGraphic
                     return;
                 }
 
-                int vertexCount = 0;
+                Rect rect = GetPixelAdjustedRect();
+                Color tint = color;
 
                 (float time1, Color color1) = enumerator.Current;
                 while (enumerator.MoveNext())
@@ -75,8 +75,8 @@ namespace Gilzoide.GradientGraphic
                             v2 = new Vector2(time1, 1);
                             v3 = new Vector2(time2, 1);
                             v4 = new Vector2(time2, 0);
-                            c1 = c2 = color1;
-                            c3 = c4 = color2;
+                            c1 = c2 = color1 * tint;
+                            c3 = c4 = color2 * tint;
                             break;
                         
                         case Direction.RightToLeft:
@@ -84,8 +84,8 @@ namespace Gilzoide.GradientGraphic
                             v2 = new Vector2(1 - time1, 1);
                             v3 = new Vector2(1 - time2, 1);
                             v4 = new Vector2(1 - time2, 0);
-                            c1 = c2 = color1;
-                            c3 = c4 = color2;
+                            c1 = c2 = color1 * tint;
+                            c3 = c4 = color2 * tint;
                             break;
                         
                         case Direction.BottomToTop:
@@ -93,8 +93,8 @@ namespace Gilzoide.GradientGraphic
                             v2 = new Vector2(0, time2);
                             v3 = new Vector2(1, time2);
                             v4 = new Vector2(1, time1);
-                            c1 = c4 = color1;
-                            c2 = c3 = color2;
+                            c1 = c4 = color1 * tint;
+                            c2 = c3 = color2 * tint;
                             break;
 
                         case Direction.TopToBottom:
@@ -102,12 +102,14 @@ namespace Gilzoide.GradientGraphic
                             v2 = new Vector2(0, 1 - time2);
                             v3 = new Vector2(1, 1 - time2);
                             v4 = new Vector2(1, 1 - time1);
-                            c1 = c4 = color1;
-                            c2 = c3 = color2;
+                            c1 = c4 = color1 * tint;
+                            c2 = c3 = color2 * tint;
                             break;
                             
                         default: throw new ArgumentOutOfRangeException(nameof(_direction));
                     }
+
+                    int vertexCount = vh.currentVertCount;
 
                     vh.AddVert(Rect.NormalizedToPoint(rect, v1), c1, new Vector2(0, 0));
                     vh.AddVert(Rect.NormalizedToPoint(rect, v2), c2, new Vector2(0, 1));
@@ -116,7 +118,6 @@ namespace Gilzoide.GradientGraphic
 
                     vh.AddTriangle(vertexCount, vertexCount + 1, vertexCount + 2);
                     vh.AddTriangle(vertexCount + 2, vertexCount + 3, vertexCount);
-                    vertexCount += 4;
 
                     (time1, color1) = (time2, color2);
                 }
