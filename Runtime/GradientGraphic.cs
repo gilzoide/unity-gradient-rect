@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 namespace Gilzoide.GradientGraphic
 {
+    [RequireComponent(typeof(CanvasRenderer))]
     public class GradientGraphic : Graphic
     {
-        public enum Direction
+        public enum GradientDirection
         {
             LeftToRight,
             RightToLeft,
@@ -17,7 +18,7 @@ namespace Gilzoide.GradientGraphic
 
         [Space]
         [SerializeField] protected Gradient _gradient;
-        [SerializeField] protected Direction _direction;
+        [SerializeField] protected GradientDirection _direction;
 
         public Gradient Gradient
         {
@@ -33,7 +34,7 @@ namespace Gilzoide.GradientGraphic
             }
         }
 
-        public Direction GradientDirection
+        public GradientDirection Direction
         {
             get => _direction;
             set
@@ -70,7 +71,7 @@ namespace Gilzoide.GradientGraphic
                     Color c1, c2, c3, c4;
                     switch (_direction)
                     {
-                        case Direction.LeftToRight:
+                        case GradientDirection.LeftToRight:
                             v1 = new Vector2(time1, 0);
                             v2 = new Vector2(time1, 1);
                             v3 = new Vector2(time2, 1);
@@ -79,7 +80,7 @@ namespace Gilzoide.GradientGraphic
                             c3 = c4 = color2 * tint;
                             break;
                         
-                        case Direction.RightToLeft:
+                        case GradientDirection.RightToLeft:
                             v1 = new Vector2(1 - time1, 0);
                             v2 = new Vector2(1 - time1, 1);
                             v3 = new Vector2(1 - time2, 1);
@@ -88,7 +89,7 @@ namespace Gilzoide.GradientGraphic
                             c3 = c4 = color2 * tint;
                             break;
                         
-                        case Direction.BottomToTop:
+                        case GradientDirection.BottomToTop:
                             v1 = new Vector2(0, time1);
                             v2 = new Vector2(0, time2);
                             v3 = new Vector2(1, time2);
@@ -97,7 +98,7 @@ namespace Gilzoide.GradientGraphic
                             c2 = c3 = color2 * tint;
                             break;
 
-                        case Direction.TopToBottom:
+                        case GradientDirection.TopToBottom:
                             v1 = new Vector2(0, 1 - time1);
                             v2 = new Vector2(0, 1 - time2);
                             v3 = new Vector2(1, 1 - time2);
