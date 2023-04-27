@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Gilzoide.GradientGraphic
+namespace Gilzoide.GradientRect
 {
     [RequireComponent(typeof(CanvasRenderer))]
-    public class GradientGraphic : Graphic
+    public class GradientRect : Graphic
     {
         public enum GradientDirection
         {

@@ -1,6 +1,6 @@
 {
-    "name": "Gilzoide.GradientGraphic",
-    "rootNamespace": "Gilzoide.GradientGraphic",
+    "name": "Gilzoide.GradientRect",
+    "rootNamespace": "Gilzoide.GradientRect",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,8 +1,8 @@
 {
-  "name": "com.gilzoide.gradient-graphic",
-  "displayName": "Gradient Graphic",
+  "name": "com.gilzoide.gradient-rect",
+  "displayName": "Gradient Rect",
   "version": "1.0.0",
-  "description": "Graphic subclass that draws gradients",
+  "description": "Component that draws a Gradient using Unity UI",
   "homepage": "https://github.com/gilzoide/unity-gradient-graphic",
   "license": "Unlicense",
   "author": {
