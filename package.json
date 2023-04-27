@@ -1,0 +1,11 @@
+{
+  "name": "com.gilzoide.gradient-graphic",
+  "displayName": "Gradient Graphic",
+  "version": "1.0.0",
+  "description": "Graphic subclass that draws gradients",
+  "homepage": "https://github.com/gilzoide/unity-gradient-graphic",
+  "license": "Unlicense",
+  "author": {
+    "name": "Gil Barbosa Reis"
+  }
+}
