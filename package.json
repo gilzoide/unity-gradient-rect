@@ -7,5 +7,12 @@
   "license": "Unlicense",
   "author": {
     "name": "Gil Barbosa Reis"
-  }
+  },
+  "samples": [
+    {
+      "displayName": "Available Configurations",
+      "description": "Simple sample 6 GradientRects showing all available configurations",
+      "path": "Samples~/Configurations"
+    }
+  ]
 }
