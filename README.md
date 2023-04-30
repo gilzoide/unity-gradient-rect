@@ -1,6 +1,7 @@
 # Gradient Rect
 Component that draws a [Gradient](https://docs.unity3d.com/ScriptReference/Gradient.html) using Unity UI.
 
+![](Extras~/demo.gif)
 
 ## How to install
 Either:
