@@ -112,10 +112,10 @@ namespace Gilzoide.GradientRect
 
                     int vertexCount = vh.currentVertCount;
 
-                    vh.AddVert(Rect.NormalizedToPoint(rect, v1), c1, new Vector2(0, 0));
-                    vh.AddVert(Rect.NormalizedToPoint(rect, v2), c2, new Vector2(0, 1));
-                    vh.AddVert(Rect.NormalizedToPoint(rect, v3), c3, new Vector2(1, 0));
-                    vh.AddVert(Rect.NormalizedToPoint(rect, v4), c4, new Vector2(1, 1));
+                    vh.AddVert(Rect.NormalizedToPoint(rect, v1), c1, v1);
+                    vh.AddVert(Rect.NormalizedToPoint(rect, v2), c2, v2);
+                    vh.AddVert(Rect.NormalizedToPoint(rect, v3), c3, v3);
+                    vh.AddVert(Rect.NormalizedToPoint(rect, v4), c4, v4);
 
                     vh.AddTriangle(vertexCount, vertexCount + 1, vertexCount + 2);
                     vh.AddTriangle(vertexCount + 2, vertexCount + 3, vertexCount);
