@@ -81,12 +81,12 @@ namespace Gilzoide.GradientRect
                             break;
                         
                         case GradientDirection.RightToLeft:
-                            v1 = new Vector2(1 - time1, 0);
-                            v2 = new Vector2(1 - time1, 1);
-                            v3 = new Vector2(1 - time2, 1);
-                            v4 = new Vector2(1 - time2, 0);
-                            c1 = c2 = color1 * tint;
-                            c3 = c4 = color2 * tint;
+                            v1 = new Vector2(1 - time2, 0);
+                            v2 = new Vector2(1 - time2, 1);
+                            v3 = new Vector2(1 - time1, 1);
+                            v4 = new Vector2(1 - time1, 0);
+                            c1 = c2 = color2 * tint;
+                            c3 = c4 = color1 * tint;
                             break;
                         
                         case GradientDirection.BottomToTop:
@@ -99,12 +99,12 @@ namespace Gilzoide.GradientRect
                             break;
 
                         case GradientDirection.TopToBottom:
-                            v1 = new Vector2(0, 1 - time1);
-                            v2 = new Vector2(0, 1 - time2);
-                            v3 = new Vector2(1, 1 - time2);
-                            v4 = new Vector2(1, 1 - time1);
-                            c1 = c4 = color1 * tint;
-                            c2 = c3 = color2 * tint;
+                            v1 = new Vector2(0, 1 - time2);
+                            v2 = new Vector2(0, 1 - time1);
+                            v3 = new Vector2(1, 1 - time1);
+                            v4 = new Vector2(1, 1 - time2);
+                            c1 = c4 = color2 * tint;
+                            c2 = c3 = color1 * tint;
                             break;
                             
                         default: throw new ArgumentOutOfRangeException(nameof(_direction));
