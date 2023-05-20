@@ -2,7 +2,7 @@
   "name": "com.gilzoide.gradient-rect",
   "displayName": "Gradient Rect",
   "version": "1.0.1",
-  "description": "Component that draws a Gradient using Unity UI",
+  "description": "UI components with color Gradients embedded in their meshes.",
   "homepage": "https://github.com/gilzoide/unity-gradient-rect",
   "license": "Unlicense",
   "author": {

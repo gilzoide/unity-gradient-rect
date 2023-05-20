@@ -112,10 +112,10 @@ namespace Gilzoide.GradientRect
 
                     int vertexCount = vh.currentVertCount;
 
-                    vh.AddVert(Rect.NormalizedToPoint(rect, v1), c1, v1);
-                    vh.AddVert(Rect.NormalizedToPoint(rect, v2), c2, v2);
-                    vh.AddVert(Rect.NormalizedToPoint(rect, v3), c3, v3);
-                    vh.AddVert(Rect.NormalizedToPoint(rect, v4), c4, v4);
+                    vh.AddVert(Rect.NormalizedToPoint(rect, v1), c1, GetUVForNormalizedPosition(v1));
+                    vh.AddVert(Rect.NormalizedToPoint(rect, v2), c2, GetUVForNormalizedPosition(v2));
+                    vh.AddVert(Rect.NormalizedToPoint(rect, v3), c3, GetUVForNormalizedPosition(v3));
+                    vh.AddVert(Rect.NormalizedToPoint(rect, v4), c4, GetUVForNormalizedPosition(v4));
 
                     vh.AddTriangle(vertexCount, vertexCount + 1, vertexCount + 2);
                     vh.AddTriangle(vertexCount + 2, vertexCount + 3, vertexCount);
@@ -123,6 +123,11 @@ namespace Gilzoide.GradientRect
                     (time1, color1) = (time2, color2);
                 }
             }
+        }
+
+        protected virtual Vector2 GetUVForNormalizedPosition(Vector2 position)
+        {
+            return position;
         }
 
         public static IEnumerable<(float t, Color c)> EnumerateGradient(Gradient gradient)
