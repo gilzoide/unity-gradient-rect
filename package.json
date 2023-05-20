@@ -1,7 +1,7 @@
 {
   "name": "com.gilzoide.gradient-rect",
   "displayName": "Gradient Rect",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Component that draws a Gradient using Unity UI",
   "homepage": "https://github.com/gilzoide/unity-gradient-rect",
   "license": "Unlicense",

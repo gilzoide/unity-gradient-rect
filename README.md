@@ -15,7 +15,7 @@ Either:
 
 - Install via [Unity Package Manager](https://docs.unity3d.com/Manual/upm-ui-giturl.html) using the following URL:
   ```
-  https://github.com/gilzoide/unity-gradient-rect.git#1.0.0
+  https://github.com/gilzoide/unity-gradient-rect.git#1.0.1
   ```
 
 - Copy the script [GradientRect.cs](Runtime/GradientRect.cs) directly into your project
