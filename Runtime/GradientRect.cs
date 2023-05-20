@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace Gilzoide.GradientRect
 {
     [RequireComponent(typeof(CanvasRenderer))]
-    public class GradientRect : Graphic
+    public class GradientRect : MaskableGraphic
     {
         public enum GradientDirection
         {
@@ -16,7 +16,7 @@ namespace Gilzoide.GradientRect
             TopToBottom,
         }
 
-        [Space]
+        [Header("Gradient")]
         [SerializeField] protected Gradient _gradient;
         [SerializeField] protected GradientDirection _direction;
 
