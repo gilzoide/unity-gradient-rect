@@ -33,4 +33,4 @@ Either:
 - [GradientTexture](Runtime/GradientTexture.cs): texture with configurable UV, tinted with Gradient colors.
 - [GradientImage](Runtime/GradientImage.cs): sprite tinted with Gradient colors.
   UVs are automatically fetched from sprite data.
-  Only simple filling is supported, no slicing nor tiling.
+  Only simple filling and slicing is supported, not tiling.
