@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 namespace Gilzoide.GradientRect
 {
-    [DisallowMultipleComponent]
-    public abstract class GradientEffect : BaseMeshEffect
+    [AddComponentMenu("UI/Effects/Gradient Effect")]
+    public class GradientEffect : BaseMeshEffect
     {
         // VertexHelper rejects meshes with 65,000 or more vertices.
         private const int VertexLimit = 65000;
@@ -97,7 +97,50 @@ namespace Gilzoide.GradientRect
 
         protected virtual Rect GetGradientRect(VertexHelper mesh)
         {
-            return graphic.GetPixelAdjustedRect();
+            Rect rect = graphic.GetPixelAdjustedRect();
+            if (!(graphic is Image image) || !image.preserveAspect ||
+                (image.type != Image.Type.Simple && image.type != Image.Type.Filled))
+                return rect;
+
+            Sprite sprite = image.overrideSprite;
+            if (sprite == null)
+                return rect;
+
+            if (image.type == Image.Type.Simple && image.useSpriteMesh)
+            {
+                // A tight sprite mesh can have different drawing bounds from its quad.
+                var vertex = new UIVertex();
+                mesh.PopulateUIVertex(ref vertex, 0);
+                Vector2 min = vertex.position;
+                Vector2 max = min;
+                for (int i = 1; i < mesh.currentVertCount; i++)
+                {
+                    mesh.PopulateUIVertex(ref vertex, i);
+                    min = Vector2.Min(min, vertex.position);
+                    max = Vector2.Max(max, vertex.position);
+                }
+
+                return Rect.MinMaxRect(min.x, min.y, max.x, max.y);
+            }
+
+            Vector2 spriteSize = sprite.rect.size;
+            int width = Mathf.RoundToInt(spriteSize.x);
+            int height = Mathf.RoundToInt(spriteSize.y);
+            if (width <= 0 || height <= 0)
+                return rect;
+
+            // Reconstruct the full drawing rect so changing fill amount only clips the gradient.
+            float spriteAspect = spriteSize.x / spriteSize.y;
+            Vector2 fittedSize = new Vector2(
+                Mathf.Min(rect.width, rect.height * spriteAspect),
+                Mathf.Min(rect.height, rect.width / spriteAspect));
+            Vector2 fittedMin = rect.min + Vector2.Scale(rect.size - fittedSize, image.rectTransform.pivot);
+            Vector4 padding = UnityEngine.Sprites.DataUtility.GetPadding(sprite);
+            return Rect.MinMaxRect(
+                fittedMin.x + fittedSize.x * (padding.x / width),
+                fittedMin.y + fittedSize.y * (padding.y / height),
+                fittedMin.x + fittedSize.x * ((width - padding.z) / width),
+                fittedMin.y + fittedSize.y * ((height - padding.w) / height));
         }
 
         private bool TrySubdivide(VertexHelper mesh, Projection projection, bool fixedColor)
