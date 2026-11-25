@@ -29,8 +29,8 @@ Either:
 
 
 ## Components:
-- [GradientRect](Runtime/GradientRect.cs): rectangle colored with Gradient colors.
-- [GradientTexture](Runtime/GradientTexture.cs): texture with configurable UV, tinted with Gradient colors.
+- [Gradient Rect (Legacy)](Runtime/GradientRect.cs): rectangle colored with Gradient colors.
+- [Gradient Texture (Legacy)](Runtime/GradientTexture.cs): texture with configurable UV, tinted with Gradient colors.
 - [Gradient Image (Legacy)](Runtime/GradientImage.cs): sprite tinted with Gradient colors.
   UVs are automatically fetched from sprite data.
   Only simple filling is supported, no slicing nor tiling.
@@ -41,3 +41,6 @@ Either:
   In Linear color space, colors are sampled in the same space Unity uses to interpolate UI vertices, keeping the gradient consistent across Image types.
   Keep using the Image inspector for slicing, tiling, and other Image settings. The effect multiplies the existing tint and uses the Image's material.
   If subdivision would exceed uGUI's vertex limit, the effect samples the gradient on the existing vertices.
+- [Gradient Texture Effect](Runtime/GradientTextureEffect.cs): adds a gradient to a standard Unity UI `RawImage`.
+  Add it via **Add Component → UI → Effects → Gradient Texture Effect**, then set **Gradient** and **Angle**.
+  Set **Texture** and **UV Rect** on the Raw Image. The gradient spans the UI rect independently of the texture's UVs.

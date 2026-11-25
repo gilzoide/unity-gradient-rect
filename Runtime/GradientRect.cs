@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 namespace Gilzoide.GradientRect
 {
+    [AddComponentMenu("UI/Gradient Rect (Legacy)")]
     [RequireComponent(typeof(CanvasRenderer))]
     public class GradientRect : MaskableGraphic
     {

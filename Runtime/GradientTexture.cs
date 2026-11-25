@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Gilzoide.GradientRect
 {
+    [AddComponentMenu("UI/Gradient Texture (Legacy)")]
     [RequireComponent(typeof(CanvasRenderer))]
     public class GradientTexture : GradientRect
     {
